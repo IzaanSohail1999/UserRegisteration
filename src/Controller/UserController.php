@@ -25,7 +25,6 @@ class UserController extends AbstractController
      */
     public function registerUserAction(Request $request): Response
     {
-
         if($request->getMethod() == 'POST') {
             $params = $request->request->all();
             $file = $request->files->get('image'); // Get the uploaded file
@@ -65,8 +64,25 @@ class UserController extends AbstractController
 
         if (empty($data['email'])) {
             $errors[] = 'Email is required.';
+        } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Invalid email format.';
+        }
+
+        if (empty($data['password'])) {
+            $errors[] = 'Password is required.';
+        } elseif (strlen($data['password']) < 8) {
+            $errors[] = 'Password must be at least 8 characters long.';
+        }
+
+        if ($data['password'] !== $data['repeat_password']) {
+            $errors[] = 'Passwords do not match.';
+        }
+
+        if (empty($data['full_name'])) {
+            $errors[] = 'Full name is required.';
         }
 
         return $errors;
     }
+
 }
