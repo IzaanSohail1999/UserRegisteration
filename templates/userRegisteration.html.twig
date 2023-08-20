@@ -2,77 +2,7 @@
 <html>
 <head>
     <title>User Registration Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 400px;
-            text-align: center;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: #ffffff;
-            transition: background-color 0.2s;
-            margin-top: 15px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .language-toggle {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 100;
-            background-color: #007bff;
-            color: #ffffff;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
 <div class="container">
@@ -94,10 +24,10 @@
         <label for="image">Passport Scan:</label>
         <input type="file" id="image" name="image" accept="image/*" required>
 
-        <button id="submit-button" type="submit">Register</button>
+        <button class="user-registration" id="submit-button" type="submit">Register</button>
     </form>
 
-    <button id="back-button" onclick="window.location.href = '{{ path('app_homepage') }}'">Back</button>
+    <button class="user-registration" id="back-button" onclick="window.location.href = '{{ path('app_homepage') }}'">Back</button>
 </div>
 <script>
     var languageToggle = document.getElementById('language-toggle');
