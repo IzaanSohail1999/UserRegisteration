@@ -29,7 +29,6 @@ class UserController extends AbstractController
         if($request->getMethod() == 'POST') {
             $params = $request->request->all();
             $file = $request->files->get('image'); // Get the uploaded file
-//            $uploadedFilePath = $file->getPathname();
 
             $imageDirectory = $this->getParameter('kernel.project_dir') . '/public/images/user';
             $imageName = uniqid() . '.' . $file->getClientOriginalExtension();
@@ -64,11 +63,9 @@ class UserController extends AbstractController
     {
         $errors = [];
 
-        // Perform validation on form fields
         if (empty($data['email'])) {
             $errors[] = 'Email is required.';
         }
-        // Perform more validation for other fields
 
         return $errors;
     }
